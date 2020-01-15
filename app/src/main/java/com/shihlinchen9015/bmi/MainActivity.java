@@ -9,7 +9,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
@@ -33,9 +32,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 new AlertDialog.Builder(MainActivity.this)
-                        .setTitle("Help")
-                        .setMessage("Body mass index (BMI) is a value derived from the mass (weight) and height of a person.")
-                        .setPositiveButton("OK", null)
+                        .setTitle(R.string.help)
+                        .setMessage(R.string.bmi_info)
+                        .setPositiveButton(R.string.ok, null)
                         .show();
             }
         });
@@ -49,12 +48,12 @@ public class MainActivity extends AppCompatActivity {
         float bmi = weight / (height * height);
 
         Log.d("MainActivity", "BMI:" + bmi);
-        Toast.makeText(this, "Your BMI : " + bmi, Toast.LENGTH_LONG).show();
+        Toast.makeText(this, getString(R.string.your_bmi) + bmi, Toast.LENGTH_LONG).show();
 
         new AlertDialog.Builder(this)
                 .setTitle("BMI")
-                .setMessage("Your BMI : " + bmi)
-                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                .setMessage(getString(R.string.your_bmi) + bmi)
+                .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         edWeight.setText("");
